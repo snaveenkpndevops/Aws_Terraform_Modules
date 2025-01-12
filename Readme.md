@@ -137,8 +137,83 @@ Automation: Integrate Terraform workflows with `CI/CD pipelines` for consistent 
 6. By following this structure, your Terraform project remains modular, maintainable, and suitable for scaling in production environments.
 
 
-## When to use Root Level Directory and when to skip Root Level Directory
+# When to use Root Level Directory and when to skip Root Level Directory
 
+The best practice is to combine both approaches: use a root folder for shared infrastructure and a separate environments folder for environment-specific configurations. This allows you to manage global resources in one place while maintaining the flexibility to customize settings for each environment.
+
+
+## when to skip Root Level Directory
+
+If each environment operates independently with no shared resources or configurations, you don't need a `root-level` main.tf. Instead, keep all configurations self-contained within environment folders.
+
+### Images:
+
+
+![Skip root folder Structure](./images/skip%20root%20folder.png)
+
+Here, each environment is treated as an independent Terraform configuration, and the root folder is just a container for organization.
+
+### Best Practices
+
+1. Use a root-level main.tf:
+
+* When you have shared resources or modules.
+* For centralized management or global configurations.
+* To define Terraform backends or workspaces.
+
+2. Avoid a root-level main.tf:
+
+* When environments are completely isolated and independent.
+* When environment-specific configurations don't need to reference shared resources.
+
+3. Ensure modularity:
+
+* Use modules for reusable components, whether at the root level or environment-specific levels.
+
+By understanding your use case (shared vs. independent), you can decide whether a root-level main.tf is necessary.
+
+
+# Let's Consider an Example when to use root folder vs when to skip root folder:
+
+
+## 1. when to skip root folder  --> Independent Resource
+
+If each environment operates independently with no shared resources or configurations, you don't need a root-level main.tf. Instead, keep all configurations self-contained within environment folders.
+
+### Images:
+
+
+![Skip root folder Structure](./images/skip%20root%20folder.png)
+
+## 2. when to use root folder  --> Shared Resource
+
+### Scenario: Multiple Environments (dev, prod) with Shared Resources
+
+We have two environments: `dev and prod`. Both environments need to use an S3 bucket, but the dev and prod environments have different configurations.
+
+We also have some `shared resources` like a VPC and IAM roles that are common to both environments.
+
+
+### Folder Structure
+
+
+### Images:
+
+
+![Shared folder Structure](./images/Shared%20folder%20Structure.png)
+
+
+### Explanation
+
+1. Root-Level main.tf (Shared Resources):
+
+* The root-level main.tf is used to define shared resources like VPC, IAM roles, or modules that are used across both dev and prod environments.
+* You can also configure the backend here if you're using a shared state.
+
+2. Environment-Specific main.tf:
+
+* Each environment (e.g., dev, prod) has its own main.tf file where you specify the environment-specific configurations like the S3 bucket name, versioning, etc.
+* These files will reference the modules defined in the root or shared resources.
 
 
 ## Terraform Installation and Configuration
