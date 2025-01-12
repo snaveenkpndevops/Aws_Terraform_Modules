@@ -138,3 +138,10 @@ Automation: Integrate Terraform workflows with `CI/CD pipelines` for consistent 
 
 
 
+## Terraform Installation and Configuration
+
+For detailed instructions on installing Terraform and configuring it for use, please refer to the `terraform.md` file included in this repository.
+
+
+
+
