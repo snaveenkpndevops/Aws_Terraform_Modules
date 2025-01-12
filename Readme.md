@@ -137,11 +137,16 @@ Automation: Integrate Terraform workflows with `CI/CD pipelines` for consistent 
 6. By following this structure, your Terraform project remains modular, maintainable, and suitable for scaling in production environments.
 
 
+## When to use Root Level Directory and when to skip Root Level Directory
+
+
 
 ## Terraform Installation and Configuration
 
 For detailed instructions on installing Terraform and configuring it for use, please refer to the `terraform.md` file included in this repository.
 
 
+## Terraform Standards
 
+For detailed instructions on Terraform Standards, please refer to the `terraform_standards.md` file included in this repository.
 
