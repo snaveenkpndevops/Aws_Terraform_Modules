@@ -10,9 +10,9 @@
 
 	* The pattern <project>-<environment>-<resource> can be applied like this:
 	
-	Ex: banking-prod-vm
-	    banking-dev-vm      
-		banking-qa-vm      
+	Ex: banking-prod-vm,
+        banking-dev-vm,
+        banking-qa-vm      
 		
 	Here banking is the project, prod is the environment, vm is the resource.
 	
